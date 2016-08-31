@@ -1,0 +1,48 @@
+---
+title: "Homework 1"
+author: "Andre LaFleur"
+date: "August 29, 2016"
+output: html_document
+---
+
+# Problem 1
+
+TODO: This
+
+# Problem 2
+
+  a. $R^c$
+  b. $R \cap F^c$
+  c. $R \cup F$
+  d. $(R \cup F)^c$
+
+# Problem 3
+
+TODO: Calculate these
+
+  a. $R^c$
+    Since $P(R) = 0.15$ and $P(R^c) = 1-P(R)$, $P(R) = 1 - 0.15 = 0.85$
+  b. $R \cap F^c$
+  c. $R \cup F$
+  d. $(R \cup F)^c$
+
+# Problem 4
+
+TODO: More work is required? It doesn't seem like something that needs much explanation
+
+  a. 
+    i. $\Omega = \{TTH, THT, HTT\}$
+    ii. $\Omega = \{TTT, TTH, THT, HTT\}$
+    iii. $\Omega = \{TTT, HTT, HHT, HHH\}$
+    iv. $\Omega = \{THH, THT, TTH, TTT\}$
+    $\Omega = \{HHH, HTH, HHT, HTT\}$
+    
+  b.
+    i. $\Omega = \{HHH, THH, HTH, HHT, TTT\}$
+    ii. $\Omega = \{TTH, THT, HTT, TTT\}$
+    iii. $\Omega = \{HTT\}$
+
+# Problem 5
+
+TODO: Calculate probabilities of all the (b) sets above
+
