@@ -7,42 +7,73 @@ output: html_document
 
 # Problem 1
 
-TODO: This
+If $A$ and $B$ are disjoint sets, then $A-B = A$, as there is no interesection between $A$ and $B$.
+Thus $P(A-B) = P(A)$, as $P(A-B) = P(A \cap B^c) = P(A)$ for disjoint events.
 
 # Problem 2
 
-  a. $R^c$
-  b. $R \cap F^c$
-  c. $R \cup F$
-  d. $(R \cup F)^c$
+  a. Someone is not rich: $R^c$
+  b. Someone is rich and not famous: $R \cap F^c$
+  c. Someone is rich or famous: $R \cup F$
+  d. Someone who is not rich or famous: $(R \cup F)^c$
 
 # Problem 3
 
-TODO: Calculate these
+Given that $P(R) = 0.15$, $P(F) = 0.08$, and $P(R \cap F) = 0.06$, the solution to (a) is quite straightforward:
 
-  a. $R^c$
-    Since $P(R) = 0.15$ and $P(R^c) = 1-P(R)$, $P(R) = 1 - 0.15 = 0.85$
-  b. $R \cap F^c$
-  c. $R \cup F$
-  d. $(R \cup F)^c$
+$$\begin{align}
+P(R^c) &= 1 - P(R) &\text{Compliment Rule}\\
+&= 1 - 0.15 \\
+&= 0.85
+\end{align}
+$$
 
-# Problem 4
+The solution to (b) is a bit more intense:
 
-TODO: More work is required? It doesn't seem like something that needs much explanation
+$$\begin{align}
+P(R \cap F^c) &= P(R - F) &\text{Definition of set difference}\\
+&= P(R) - P(R \cap F) &\text{Difference Rule}\\
+&= 0.15 - 0.06 \\
+&= 0.09
+\end{align}
+$$
 
-  a. 
-    i. $\Omega = \{TTH, THT, HTT\}$
-    ii. $\Omega = \{TTT, TTH, THT, HTT\}$
-    iii. $\Omega = \{TTT, HTT, HHT, HHH\}$
-    iv. $\Omega = \{THH, THT, TTH, TTT\}$
-    $\Omega = \{HHH, HTH, HHT, HTT\}$
-    
-  b.
-    i. $\Omega = \{HHH, THH, HTH, HHT, TTT\}$
-    ii. $\Omega = \{TTH, THT, HTT, TTT\}$
-    iii. $\Omega = \{HTT\}$
+The solution to (c):
 
-# Problem 5
+$$\begin{align}
+P(R \cup F) &= P(R) + P(F) - P(R \cap F) &\text{Inclusion-Exclusion Rule}\\
+&= 0.15 + 0.08 - 0.06 \\
+&= 0.17
+\end{align}
+$$
 
-TODO: Calculate probabilities of all the (b) sets above
+The solution to (d):
+
+$$\begin{align}
+P((R \cup F)^c) &= 1 - P(R \cup F) &\text{Compliment rule}\\
+&= 1 - (P(R) + P(F) - P(R \cap F)) &\text{Inclusion-Exclusion Rule}\\
+&= 1 - (0.15 + 0.08 - 0.06) \\
+&= 1 - 0.17 \\
+&= 0.83
+\end{align}
+$$
+
+# Problems 4 & 5
+
+Let $\Omega = \{HHH, THH, HTH, HHT, T TH, THT, HTT, TTT\}$, which represents all the possibilities of three tosses of a coin. Now let $A \subseteq \Omega$, where $A$ corresponds to some set following a rule written out in English, as provided below:
+
+$$\begin{align}
+\text{Tails is thrown exactly twice} & A = \{TTH, THT, HTT\} \\
+\text{Tails is thrown at least two times} & A = \{TTT, TTH, THT, HTT\} \\
+\text{Tails did not appear before heads appeared} & A = \{THH, THT, TTH, TTT\} \\
+\text{The first throw resulted in tails} & A = \{HHH, HTH, HHT, HTT\} \\
+\end{align}
+$$
+
+Since $|\Omega| = 9$, then $P(A) = \dfrac{|A|}{|\Omega|}$. Below are the probabilities corresponding to each of the given rules:
+
+1. $P(A) = \dfrac{3}{9} = \dfrac{1}{3}$, or `r 3 / 9`
+2. $P(A) = \dfrac{4}{9}$, or `r 4 / 9`
+3. $P(A) = \dfrac{4}{9}$, or `r 4 / 9`
+4. $P(A) = \dfrac{4}{9}$, or `r 4 / 9`
 
