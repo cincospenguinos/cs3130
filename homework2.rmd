@@ -8,14 +8,59 @@ output: html_document
 # Problem 1
 
 Let $W$ be the event of a white ball being drawn, and $R$ be the event of a red ball being drawn.
-In this problem we are asked to calculate $P(R_{2}|R_{1})$, given that whenever a red ball is drawn
-the ball is returned to the urn. This calculation is relatively simple:
+In this problem we are asked to calculate $P(R_{2} \cap R_{1})$, given that whenever a red ball is drawn
+the ball is returned to the urn. Thus the probability of drawing a red ball on the first draw, or $P(R_1)$,
+is $P(R_1) = \frac{1}{2}$, while $P(R_2) = \frac{3}{4}$, etc. Given this information, this calculation is 
+relatively straightforward:
 
 $$
+\begin{align}
+P(R_2 \cap R_1) &= P(R_2 | R_1) * P(R_1) & \text{Multiplication rule}\\
+&= \frac{3}{4} * \frac{1}{2}&  \\
+&= \frac{3}{8} &\\
+\end{align}
 $$
 
 # Problem 2
+
+```{r}
+# The urns 
+first = c("R", "W") # "Given W1" is identical to first
+givenR1 = c("R", "R", "R", "W")
+omega = c("RR", "RW", "WR", "WW")
+
+trials = 10000
+twoRs = 0
+
+for(i in 1:trials) {
+  draw1 = sample(first, 1, TRUE)
+  draw2 = sample(givenR1, 1, TRUE)
+  
+  if(("R" %in% union(draw1, draw2)) & !("W" %in% union(draw1, draw2))){
+    twoRs = twoRs + 1
+  }
+  
+  #cat(paste("(", draw1, ",  ", draw2, ")  "))
+  #cat(paste(union(draw1, draw2)), "\n")
+}
+
+cat(paste("P(R2) = ", twoRs / trials, "\t Expected: ", 3 / 8))
+
+```
+
 # Problem 3
+
+
+
 # Problem 4
+
+
+
 # Problem 5
+
+
+
 # Extra Credit
+
+
+
