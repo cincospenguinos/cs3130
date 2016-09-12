@@ -1,0 +1,21 @@
+---
+title: "homework2.rmd"
+author: "Andre LaFleur"
+date: "September 20, 2016"
+output: html_document
+---
+
+# Problem 1
+
+Let $W$ be the event of a white ball being drawn, and $R$ be the event of a red ball being drawn.
+In this problem we are asked to calculate $P(R_{2}|R_{1})$, given that whenever a red ball is drawn
+the ball is returned to the urn. This calculation is relatively simple:
+
+$$
+$$
+
+# Problem 2
+# Problem 3
+# Problem 4
+# Problem 5
+# Extra Credit
