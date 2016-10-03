@@ -1,0 +1,71 @@
+---
+title: "Homework3"
+author: "Andre LaFleur"
+date: "October 3, 2016"
+output: html_document
+---
+
+# Problem 1
+
+The distribution of M would be a geometric distribution. Assuming that the probabilities of winning either
+one of the lotteries is the same each round, then with each subsequent attempt at winning either the
+probability of winning one goes up. Its parameter would be $p~1~ + p~2~$, as the geometric distribution
+must take into account the probabilities of both lotteries.
+
+# Problem 2
+
+Let F be the event "the software recognized the face correctly". It is that the software is used 50 times
+a day and $P(F) = 0.9$. The distribution function associated with this scenario must be a Binomial
+distribution, as there are only two results from each use of the face recognition software: that the face
+was recognized or it was not. Thus let $\Theta = P(F) = 0.9$. The probability formula will be
+$P(F = k) = {50 \choose k} P(F)^k * P(F)^{50-k}$, for some $k$ faces correctly recognized.
+
+## Part A
+
+According to the formula given previously, it is expected that $P(F^c = 8) = P(F = 42) = 0.06427787788$ Below is the
+function in R:
+
+```{r}
+dbinom(42, size = 50, prob = 9/10)
+```
+
+## Part B
+
+## Part C
+
+# Problem 3
+
+```{r}
+days = 10000 # The number of days we're trying out
+
+# Function that returns the number of faces recognized in a given day
+simulateDay = function(){
+  facesPerDay = 50
+  facesRecognized = 0
+  
+  for(i in 1:facesPerDay){
+    
+    if(runif(1, 0, 1.0) < 0.9){
+      facesRecognized = facesRecognized + 1
+    }
+  }
+  
+  return(facesRecognized);
+}
+
+### PART A ###
+
+experiment = replicate(days, simulateDay())
+res = experiment[experiment == 42]
+cat(paste("PART A: ", length(res) / days))
+
+### PART B ###
+
+### PART C ###
+```
+
+# Problem 4
+
+# Problem 5
+
+# Problem 6
