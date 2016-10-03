@@ -31,7 +31,20 @@ dbinom(42, size = 50, prob = 9/10)
 
 ## Part B
 
+According to the formula given above, for $P(F^c <= 5) = P(F >= 45) = P(F = 45) + P(F = 46) + ... + P(F = 50) = 0.616$. Thus we need
+to sum five differenet binomial distribution evaluations together, as shown below:
+
+```{r}
+dbinom(45, size = 50, prob = 9/10) + dbinom(46, size = 50, prob = 9/10) + dbinom(47, size = 50, prob = 9/10) + dbinom(48, size = 50, prob = 9/10) + dbinom(49, size = 50, prob = 9/10) + dbinom(50, size = 50, prob = 9/10)
+```
+
 ## Part C
+
+According to the formula given above, $P(F = 50) = 0.0051537752$. Below is the solution in R:
+
+```{r}
+dbinom(50, size = 50, prob = 9/10)
+```
 
 # Problem 3
 
@@ -61,7 +74,15 @@ cat(paste("PART A: ", length(res) / days))
 
 ### PART B ###
 
+experiment = replicate(days, simulateDay())
+res = experiment[experiment >= 45]
+cat(paste("PART B: ", length(res) / days))
+
 ### PART C ###
+
+experiment = replicate(days, simulateDay())
+res = experiment[experiment == 50]
+cat(paste("PART B: ", length(res) / days))
 ```
 
 # Problem 4
