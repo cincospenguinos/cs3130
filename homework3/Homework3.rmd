@@ -9,12 +9,12 @@ output: html_document
 
 The distribution of M would be a geometric distribution. Assuming that the probabilities of winning either
 one of the lotteries is the same each round, then with each subsequent attempt at winning either the
-probability of winning one goes up. Its parameter would be $p~1~ + p~2~$, as the geometric distribution
+probability of winning one goes up. Its parameter would be $p_1 + p_2$, as the geometric distribution
 must take into account the probabilities of both lotteries.
 
 # Problem 2
 
-Let F be the event "the software recognized the face correctly". It is that the software is used 50 times
+Let $F$ be the event "the software recognized the face correctly". It is given that the software is used 50 times
 a day and $P(F) = 0.9$. The distribution function associated with this scenario must be a Binomial
 distribution, as there are only two results from each use of the face recognition software: that the face
 was recognized or it was not. Thus let $\Theta = P(F) = 0.9$. The probability formula will be
@@ -22,7 +22,7 @@ $P(F = k) = {50 \choose k} P(F)^k * P(F)^{50-k}$, for some $k$ faces correctly r
 
 ## Part A
 
-According to the formula given previously, it is expected that $P(F^c = 8) = P(F = 42) = 0.06427787788$ Below is the
+According to the formula given previously, it is expected that $P(F^c = 8) = P(F = 42) = 0.06427787788$. Below is the
 function in R:
 
 ```{r}
@@ -204,19 +204,22 @@ Since $q = 0.5$, it follows that the score that a student may get with a probabi
 
 # Problem 6
 
+It is given that the server application has a distribution function 
 
+$$f(x) = \lambda * e^{-\lambda * x}$$
 
+where $\lambda$ is the rate of requests per minute, and $x$ is the time it takes for a request to be processed.
+Given that $x = 1 minute$ and we are building the software to minimize the probability of waiting down to $10%$,
+we are asked what the maximum $\lambda$ we can have. To solve this problem, we will find the 10th quantile,
+shown below:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+$$\begin{align}
+P(X \leq 0.1) \\
+F(x) = 0.9\\
+\Rightarrow 1 - e^{-\lambda * x} = 0.9 \\
+e^{-\lambda * x} = 0.1 \\
+-\lambda * x = \ln{0.1}\\
+\lambda = -\ln{0.1} & \text{x = 1 minute}\\
+&\approx 2.30258509299\\
+\end{align}
+$$
