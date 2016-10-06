@@ -58,7 +58,7 @@ simulateDay = function(){
   
   for(i in 1:facesPerDay){
     
-    if(runif(1, 0, 1.0) < 0.9){
+    if(runif(1, 0, 1.0) <= 0.9){
       facesRecognized = facesRecognized + 1
     }
   }
@@ -86,6 +86,74 @@ cat(paste("PART B: ", length(res) / days))
 ```
 
 # Problem 4
+
+Let $X ~ Geom(\Theta)$, where $\Theta$ is the probability of the couple having a girl. 
+Given that the probability of having a girl $\Theta = 0.5$, the probability mass function for this scenario would be 
+
+$$P(X=k) = (1-\Theta)^{k - 1} * \Theta = 0.5^{k-1} * 0.5 = 0.5^{k}$$
+
+as this scenario matches that of a geometric distribution.
+
+## Part A
+
+The probability of having more boys than girls is $P(X \geq 3)$, as the couple must have at least 3 children to have more
+boys than girls. That probability is solved here: 
+
+$$\begin{align}
+P(X \geq 3) &= 1 - P(X \leq 2) \\
+&= 1 - (P(X = 1) + P(X = 2))\\
+&= 1 - (0.75) \\
+&= 0.25
+\end
+$$
+
+Given this information, it is most likely that they will either have just one girl, or one boy and one girl. This makes
+it most probable that the couple will have more girls than boys (due to having no boys), or have an equal number of the two.
+
+## Part B
+
+Using the formula above, the probability that the couple has exactly $k$ boys would be that of our original formula, plus
+one; that is, $P(X=k) = 0.5^{k + 1}$, where $k$ is the number of boys. This is because the original formula assumed that
+the kth child of the couple is a girl, but what we desire is the formula that gives us the probability for $k$ boys. Thus
+we can modify our original formula by simply adding one, because if a couple ends up having $k$ boys given the parameters
+spelled out before, then the $k+1$th child must be a girl.
+
+## Part C
+
+Given that the probability of having a boy is 0.6, then $\Theta = 0.4$. This changes our formula to
+
+$$P(X=k) = 0.6^{k - 1} * 0.4$$
+
+where $k$ is the number of children the couple would have. Given this is the case, consult the following
+values for $P(X=k)$:
+
+|  $k$  |  $P(X=k)$  |
+|:-----:|:----------:|
+|  $1$  |   $0.4$    |
+|  $2$  |   $0.24$   |
+|  $3$  |   $0.144$  |
+|  $4$  |  $0.0864$  |
+
+Therefore, for the couple to have more boys than girls, that would mean the couple must have at least three children
+for this to be the case. We can solve for that probability:
+
+$$\begin{align}
+P(X \geq 3) &= 1 - P(X \leq 2) \\
+&= 1 - (P(X = 1) + P(X = 2))\\
+&= 1 - (0.64) \\
+&= 0.36
+\end
+$$
+
+This implies that it is more likely that the couple will have one boy and one girl, or just one girl, in spite of the
+fact that $\Theta = 0.4$.
+
+## Part D
+
+The probability of having exactly $k$ boys is simply the probability of the $k+1$th child being a girl, making our formula
+simply
+
+$$P(X=k) = 0.6^{k} * 0.4$$
 
 # Problem 5
 
