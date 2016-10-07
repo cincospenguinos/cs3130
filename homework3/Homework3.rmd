@@ -100,11 +100,11 @@ The probability of having more boys than girls is $P(X \geq 3)$, as the couple m
 boys than girls. That probability is solved here: 
 
 $$\begin{align}
-P(X \geq 3) &= 1 - P(X \leq 2) \\
+P(X \geq 3) &= 1 - P(X \leq 2)\\
 &= 1 - (P(X = 1) + P(X = 2))\\
 &= 1 - (0.75) \\
 &= 0.25
-\end
+\end{align}
 $$
 
 Given this information, it is most likely that they will either have just one girl, or one boy and one girl. This makes
@@ -138,11 +138,11 @@ Therefore, for the couple to have more boys than girls, that would mean the coup
 for this to be the case. We can solve for that probability:
 
 $$\begin{align}
-P(X \geq 3) &= 1 - P(X \leq 2) \\
+P(X \geq 3) &= 1 - P(X \leq 2)\\
 &= 1 - (P(X = 1) + P(X = 2))\\
-&= 1 - (0.64) \\
+&= 1 - (0.64)\\
 &= 0.36
-\end
+\end{align}
 $$
 
 This implies that it is more likely that the couple will have one boy and one girl, or just one girl, in spite of the
@@ -157,4 +157,61 @@ $$P(X=k) = 0.6^{k} * 0.4$$
 
 # Problem 5
 
+We are given a piecewise function as the probability density function for our continuous random variable:
+
+$$
+f(x) = \left\{
+     \begin{array}{lr}
+       4x & : 0 \leq x \leq \frac{1}{2}\\
+       4 - 4x & : \frac{1}{2} \leq x \leq 1 \\
+       0  & : x \leq 0 \cup x \geq 1
+     \end{array}
+     \right.
+$$
+
+## Part A
+
+To see what the probability of a student failing the exam is, given that the point of failure is $0.55$, we are confronted with
+the following integral:
+
+$$\int_0^0.55 f(x) dx$$
+
+Since $f(X)$ is a peicewise function, that interval is relatively trivial to solve:
+
+$$\begin{align}
+\int_0^0.55 f(x) dx &= \int_0^0.5 4x dx + \int_0.5^0.55 4 - 4x dx\\
+&= 2x^2 \big|_0^{0.5} + 4x - 2x^x \big|_{0.5}^{0.55}\\
+&= 0.595
+\end{align}
+$$
+
+Thus the probability that a student will fail the exam is $0.595$.
+
+## Part B
+
+To figure out what the 50th percentile of this distribution is, we must solve $P(X \leq q) = p$, where $p$ is the percentile
+we are trying to solve - in this case, $p = 0.5$. Thus we use our function to solve for q like so:
+
+$$\begin{align}
+
+\end{align}
+$$
+
 # Problem 6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
