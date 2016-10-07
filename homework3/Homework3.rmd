@@ -193,9 +193,14 @@ To figure out what the 50th percentile of this distribution is, we must solve $P
 we are trying to solve - in this case, $p = 0.5$. Thus we use our function to solve for q like so:
 
 $$\begin{align}
-
+F(q) &= p \\
+2q^2 &= 0.5\\
+q^2 &= 0.25\\
+q &= 0.5\\
 \end{align}
 $$
+
+Since $q = 0.5$, it follows that the score that a student may get with a probability of 50% is $0.5$.
 
 # Problem 6
 
