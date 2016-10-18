@@ -1,0 +1,76 @@
+---
+title: "Homework 4"
+author: "Andre LaFleur"
+date: "October 18, 2016"
+output: html_document
+---
+
+# Problem 1
+
+## Part A
+
+For $f(x)$ to be a valid probability density function, $\int_{-\infty}^{\infty} f(x) dx = 1$. Since the integral for
+all values outside of the boundary $0 \leq x \leq c$ is simply zero, we can solve for c using the following integral:
+
+$$\begin{align}
+\int_{0}^{c} 4x + 1 dx &= 1 \\
+2x^2 + x \big|_{0}^{c} &= 1 \\
+2c^2 + c &= 1 \\
+2c^2 + c - 1 &= 0 \\
+c = \frac{1}{2} \text{or} -1 &\text{By the quadratic equation} \\
+\end{align}
+$$
+
+Since the boundary $0 \leq x \leq -1$ doesn't make much sense, $c = \frac{1}{2}$
+
+## Part B
+
+The expected value of X, $E[X]$, is given by the following equation: $$E[X] = \int_0^{\frac{1}{2}} x f(x) dx$$
+
+The value then of $E[X]$ is the following:
+
+$$\begin{align}
+\int_{0}^{1/2} 4x^2 + x dx &= \frac{4x^3}{3} + \frac{x^2}{2} \big|_0^{\frac{1}{2}}\\
+&= \frac{\frac{1}{2}}{3} + \frac{1}{8}\\
+&= \frac{7}{24}
+\end{align}
+$$
+
+## Part C
+
+The variance of X, or $Var(X)$, can be solved given the formula $Var(X) = E[X^2] - E[X]^2$. Thus we can solve
+for the value of the variance:
+
+$$\begin{align}
+E[X^2] - E[X]^2\\
+\int_0^{\frac{1}{2}} x^2 f(x) dx - (\frac{7}{24})^2\\
+\int_0^{\frac{1}{2}} 4x^3 + x^2 dx - (\frac{7}{24})^2\\
+x^4 + \frac{x^3}{3} \big|_0^{\frac{1}{2}} - (\frac{7}{24})^2\\
+\frac{1}{16} + \frac{1}{24} - (\frac{7}{24})^2\\
+\approx 0.0190972
+\end{align}
+$$
+
+## Part D
+
+Let $g(x) = 2X + 3 = 2f(x) + 3 = 8x + 5$. Since $E[2X + 3] = E[g(x)]$, we can solve for this expected value
+as follows:
+
+$$\begin{align}
+\int_{0}^{\frac{1}{2}}g(x)f(x)dx\\
+\int_{0}^{\frac{1}{2}}(8x+5)(4x+1)dx\\
+\int_{0}^{\frac{1}{2}}32x^2+28x+5dx\\
+\frac{32x^3}{3}+14x^2+5x \big|_0^{\frac{1}{2}}\\
+\frac{4}{3} + \frac{7}{2} + \frac{5}{2}\\
+\frac{22}{3}
+\end{align}
+$$
+
+## Part E
+
+# Problem 2
+# Problem 3
+# Problem 4
+# Problem 5
+# Problem 6
+# Extra Credit
