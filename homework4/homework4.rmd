@@ -77,9 +77,18 @@ be $6$.
 
 # Problem 3
 
-
+The expected value doesn't exist???
 
 # Problem 4
+
+```{r}
+trials = 10000
+numbers = sin(runif(trials, min = -pi, max = 0))
+
+cat(paste("Mean: ", mean(numbers)))
+```
+
+
 # Problem 5
 
 Let $X: [1, 6] \rightarrow [0, 2]$, Wherein the random variable $X$ maps the set $\{1, 2\}$ onto $0$, $\{3, 4, 5\}$ onto $1$, and $\{6\}$ onto $2$.
