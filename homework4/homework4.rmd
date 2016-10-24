@@ -69,7 +69,16 @@ $$
 ## Part E
 
 # Problem 2
+
+Let $X ~ Geom(\Theta)$, where $\Theta = 0.5$, the probability of getting a heads after flipping a fair coin. This implies then
+that $E[X] = \frac{1}{\Theta} = 2$. Since we are searching for the expected value of getting three heads, we are actually
+looking for $E[3X] = 3E[X] = 2 * 3 = 6$. Therefore, if we flip a fair coin until we get three heads, the expected value would
+be $6$.
+
 # Problem 3
+
+
+
 # Problem 4
 # Problem 5
 
