@@ -30,7 +30,7 @@ The expected value of X, $E[X]$, is given by the following equation: $$E[X] = \i
 The value then of $E[X]$ is the following:
 
 $$\begin{align}
-\int_{0}^{1/2} 4x^2 + x dx &= \frac{4x^3}{3} + \frac{x^2}{2} \big|_0^{\frac{1}{2}}\\
+\int_{0}^{\frac{1}{2}} 4x^2 + x dx &= \frac{4x^3}{3} + \frac{x^2}{2} \big|_0^{\frac{1}{2}}\\
 &= \frac{\frac{1}{2}}{3} + \frac{1}{8}\\
 &= \frac{7}{24}
 \end{align}
@@ -68,34 +68,58 @@ $$
 
 ## Part E
 
+Since we have solved for $E[g(X)]$, we can use the previous formula for variance to solve for $Var(g(X))$:
+
+$$\begin{align}
+E[g(x)^2] - E[g(x)]^2 \\
+&= \int_{0}^{\frac{1}{2}}g(x)^2 * f(x) dx - (\frac{22}{3})^2 \\
+&= \int_{0}^{\frac{1}{2}}(64x^2+80x+25)(4x + 1) dx - (\frac{22}{3})^2 \\
+&= \int_{0}^{\frac{1}{2}}256x^3+384x^2+180x+25 dx - (\frac{22}{3})^2 \\
+&= 64x^4+128x^3+90x^2+25x\big|_0^{\frac{1}{2}}  - (\frac{22}{3})^2 \\
+&= 55 - (\frac{22}{3})^2\\
+&\approx 1.22222222222
+\end{align}
+$$
+
 # Problem 2
 
 Let $X ~ Geom(\Theta)$, where $\Theta = 0.5$, the probability of getting a heads after flipping a fair coin. This implies then
-that $E[X] = \frac{1}{\Theta} = 2$. Since we are searching for the expected value of getting three heads, we are actually
-looking for $E[3X] = 3E[X] = 2 * 3 = 6$. Therefore, if we flip a fair coin until we get three heads, the expected value would
+that $E[X] = \frac{1}{\Theta} = 2$. Since we are searching for the expected number of coin flips to get three heads, we are actually
+looking for $E[3X] = 3E[X] = (3)(2) = 6$. Therefore, if we flip a fair coin until we get three heads, the expected number of flips would
 be $6$.
 
 # Problem 3
 
-The expected value doesn't exist???
+Since $X ~ Unif(-\pi, 0)$, $E[\sin{X}]$ is relatively straightforward integral to solve:
+
+$$\begin{align}
+E[\sin{X}] &= \int_{-\pi}^{0}\frac{\sin{x}}{\pi} dx \\
+&= \frac{-\cos{x}}{\pi}\big|_{-\pi}^0 \\
+&= \frac{-\cos{0}}{\pi} + \frac{\cos{-\pi}}{\pi} \\
+&= -\frac{2}{\pi} \\
+&\approx -0.636619 \\
+\end{align}
+$$
 
 # Problem 4
 
 ```{r}
-trials = 10000
+trials = 100000
 numbers = sin(runif(trials, min = -pi, max = 0))
 
-cat(paste("Mean: ", mean(numbers)))
+cat(paste("Mean: ", mean(numbers), "\n-2/pi: ", -2 / pi))
 ```
 
 
 # Problem 5
 
-Let $X: [1, 6] \rightarrow [0, 2]$, Wherein the random variable $X$ maps the set $\{1, 2\}$ onto $0$, $\{3, 4, 5\}$ onto $1$, and $\{6\}$ onto $2$.
+Let $X: [1, 6] \rightarrow [0, 2]$, wherein the random variable $X$ maps the set $\{1, 2\}$ onto 
+$0$, $\{3, 4, 5\}$ onto $1$, and $\{6\}$ onto $2$. The random variable $X$ now represents the game
+with jellybeans described.
 
 ## Part A
 
-The expected value of X, $E[X]$, is given below:
+The expected number of jellybeans, or the expected value of X, $E[X]$, is given below:
 
 $$\begin{align}
 E[X] &= \sum_{i=0}^{2}a_iP(X = a_i) & \text{Definition of E[X] for a discrete random variable}\\
@@ -140,20 +164,34 @@ for(i in 1:trials){
   }
 }
 
-cat(paste("Expected value of jellybeans: ", mean(jellybeans)))
+cat(paste("Expected value of jellybeans: ", mean(jellybeans), "\n5/6: ", 5 / 6))
 ```
 
 # Extra Credit
 
+The table below compares the number of points one would score on the exam, given the two 
+grading schemes my professor has provided:
 
+| Correct Answers |   0    |   1    |    2   |    3   |   4    |   5    |    6   |    7   |    8   |   9    |   10   |
+|:---------------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
+| Scheme 1        |   0    |   10   |   20   |    30  |   40   |   50   |    60  |   70   |   80   |   90   |   100  |
+| Scheme 2        | -100   |  -75   |  -50   |  -25   |   0    |   25   |   50   |   75   |   100  |  125   |  150   |
 
+According to the table above, grading scheme two pays off if I were to get at least 7 questions correct, as it gives me
+more points than grading scheme one would. If I desire getting a passing grade (70 points or higher), I would want to
+get at least 7 questions correct. Let $X_1 ~ Binom(10, p)$ representing the first grading scheme, and $X_2 ~ Binom(10, p)$
+representing the second grading scheme. Since we hope to get at least 7 questions correct, we will solve for $p$ in $E[X]$:
 
+$$\begin{align}
+E[X_1] &= 10p & E[X_2] &= 10p \\
+7 &= 10p & 7 &= 10p \\
+p = \frac{7}{10} && p = \frac{7}{10} \\
+\end{align}
+$$
 
-
-
-
-
-
-
-
-
+If I typically score a passing grade on everything else I do, that is, if $p = \frac{7}{10}$, then either grading scheme
+will provide me a passing grade, although grading scheme two will offer me more points than grading scheme one. So if I'm
+an average student and I would like an average grade, $p = \frac{7}{10}$ and either scheme would give me the grade I seek,
+I would pick scheme two, as I will get more points than if I pick scheme one. If $p < \frac{7}{10}$, scheme one would be the
+best option, as I will score more points than scheme two. If $p > \frac{7}{10}$, scheme two would definitely be the best
+option, as if I simply miss two questions I will get over 100 points.
