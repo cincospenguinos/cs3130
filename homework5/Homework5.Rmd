@@ -83,7 +83,37 @@ $$
 # Problem 2
 
 ```{r}
+# We will sample from a simple array of 00, 01, 10, and 11, where the first value is whether or
+# not a heart attack occured, and the second is whether or not the person is a smoker.
+trials = 10000
+values = sample(c(00, 01, 10, 11), size = trials, prob = c(0.5, 0.44, 0.03, 0.03), replace = TRUE)
+smokerValues = c()
+heartAttackValues = c()
 
+# We will separate everything out
+for(i in values){
+  isSmoker = (i == 11 || i == 01)
+  hadHeartAttack = (i >= 10)
+  
+  if(isSmoker)
+    smokerValues = c(smokerValues, 1)
+  else
+    smokerValues = c(smokerValues, 0)
+  
+  if(hadHeartAttack)
+    heartAttackValues = c(heartAttackValues, 1)
+  else
+    heartAttackValues = c(heartAttackValues, 0)
+}
+
+# What is P(1|1)?
+cat(paste("P(1|1)\t", sum(values == 11) / sum(heartAttackValues == 1), "\n"))
+
+# What is Cov(H, S)?
+cat(paste("Cov(H, S)\t", cov(heartAttackValues, smokerValues)))
+
+# What is Cor(H, S)?
+cat(paste("Cor(H, S)\t", cor(heartAttackValues, smokerValues)))
 ```
 
 # Problem 3
