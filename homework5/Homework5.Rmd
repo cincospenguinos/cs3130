@@ -1,0 +1,95 @@
+---
+title: "Homework5.rmd"
+author: "Andre LaFleur"
+date: "November 3, 2016"
+output: html_document
+---
+
+# Problem 1
+
+Let $S$ be the event that someone smokes. Let $H$ be the event that someone has a heart attack.
+Below is the joint probabilities given these two events:
+
+|   | S | S' |
+|:-:|:-:|:--:|
+| H | 0.03  |   0.03 |
+| H'|  0.44 |   0.5 |
+
+## Part A
+
+The proportion of people who smoke, or also simply known as $P(S)$, is discovered by adding up the columns
+of the table. Thus $P(S) = 0.03 + 0.44 = 0.47$, or 47% of the population.
+
+## Part B
+
+The proportion of people who have a heart attack, or $P(H)$, is again discovered by adding up the rows of the table
+above. Thus $P(H) = 0.03 + 0.03 = 0.06$, or 6% of the population.
+
+## Part C
+
+This question asks whether $P(H|S) > P(H|S^C)$. This is relatively straightforward to solve, shown below:
+
+$$\begin{align}
+P(H|S) &> P(H|S^C) & ? \\
+\frac{P(H, S)}{P(S)} &> \frac{P(H, S^C)}{P(S^C)} \\
+\frac{0.03}{0.47} &> \frac{0.03}{0.53} \\
+0.63829 &> 0.56603 \\
+\end{align}
+$$
+
+Thus it is more likely to have a heart attack, given you are a smoker.
+
+## Part D
+
+This question asks what $P(S|H)$ is. Using Bayes' rule, this is can be solved:
+
+$$\begin{align}
+P(S|H) &= \frac{P(H|S)P(S)}{P(H)} \\
+&= \frac{\frac{0.03}{0.47} * 0.47}{0.06} \\
+&= \frac{0.03}{0.06} \\
+&= \frac{1}{2} \\
+\end{align}
+$$
+
+## Part E
+
+For smoking to be independent of having a heart attack, $P(H|S) = P(H)$ and $P(S|H) = P(S)$.
+Since $P(H|S) = 0.64829$ and $P(H) = 0.03$, $P(H|S) \neq P(H)$ and so the two variables are
+dependent.
+
+## Part F
+
+The covariance of $H$ and $S$ is solved below:
+
+$$\begin{align}
+Cov(S, H) &= E[SH] - E[S]E[H] \\
+&= (0 * 0 * 0.5 + 0 * 1 * 0.44 + 1 * 0 * 0.03 + 1 * 1 * 0.03) - 0.47 * 0.06 \\
+&= 0.0018\\
+\end{align}
+$$
+
+## Part G
+
+The correlation of S and H, or $\rho(S, H)$, is simply the covariance divided by square root of
+the product of the variances of S and H. Since S and H are Bernoulli distributions, their variances
+are simply $\theta(1-\theta)$, where $\theta$ is the probability of their occurance. Thus
+
+$$\begin{align}
+\rho(S, H) &= \frac{0.0018}{\sqrt{0.47 * 0.53 * 0.06 * 0.94}}\\
+&\approx 0.0151860941947\\
+\end{align}
+$$
+
+# Problem 2
+
+```{r}
+
+```
+
+# Problem 3
+
+# Problem 4
+
+
+
+
