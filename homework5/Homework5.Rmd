@@ -118,7 +118,92 @@ cat(paste("Cor(H, S)\t", cor(heartAttackValues, smokerValues)))
 
 # Problem 3
 
+## Part A
+
+We can find $k$ given $f(x, y)$, and our understanding that the double integral of $f(x, y)$ must be $1$:
+
+$$\begin{align}
+1 &= \int_{0}^{\frac{\pi}{2}}\int_{0}^{\frac{\pi}{2}}ksin(x + y) dx dy\\
+&= k\int_{0}^{\frac{\pi}{2}}\int_{0}^{\frac{\pi}{2}}sin(x + y) dx dy\\
+&= k\int_{0}^{\frac{\pi}{2}}-cos(x + y) \big|_{0}^{\frac{\pi}{2}}dy\\
+&= k\int_{0}^{\frac{\pi}{2}}-cos(\frac{\pi}{2} + y) + cos(y) dy\\
+&= k(-sin(\frac{\pi}{2} + y) + sin(y) \big|_{0}^{\frac{\pi}{2}}) dy\\
+&= k(1 + 1)\\
+&= 2k\\
+k &= \frac{1}{2}\\
+\end{align}
+$$
+
+## Part B
+
+$P(X \geq \frac{\pi}{4}, Y \leq \frac{\pi}{4})$ is solved using $f(X, y)$ and integration:
+
+$$\begin{align}
+= \frac{1}{2}\int_{0}^{\frac{\pi}{4}}\int_{\frac{\pi}{4}}^{\frac{\pi}{2}}sin(x + y) dx dy\\
+= \frac{1}{2}\int_{0}^{\frac{\pi}{4}}-cos(x + y) dy \big|_{0}^{\frac{\pi}{4}}\\
+= \frac{1}{2}\int_{0}^{\frac{\pi}{4}}-cos(x + y) dy \big|_{\frac{\pi}{4}}^{\frac{\pi}{2}}\\
+= \frac{1}{2}\int_{0}^{\frac{\pi}{2}}-cos(\frac{\pi}{4} + y) + cos(\frac{\pi}{2} + y) dy\\
+= \frac{1}{2}(-sin(\frac{\pi}{4} + y) + sin(\frac{\pi}{2} + y) \big|_{0}^{\frac{\pi}{2}})\\
+= 1 - \frac{1}{\sqrt{2}}
+\end{align}
+$$
+
+## Part C
+
+The marginal probability function, $f(x)$, can be solved simply by integrating with respect to y:
+
+$$\begin{align}
+f(x) &= \frac{1}{2}\int_{0}^{\frac{\pi}{2}}sin(x + y) dy\\
+&= \frac{1}{2}(-cos(x + y)\big|_{0}^{\frac{\pi}{2}})\\
+&= \frac{1}{2}(-cos(x + \frac{\pi}{2}) + cos(x))\\
+\end{align}
+$$
+
+## Part D
+
+The marginal probability function, $f(y)$, can be solved simply by integrating with respect to x:
+
+$$\begin{align}
+f(x) &= \frac{1}{2}\int_{0}^{\frac{\pi}{2}}sin(x + y) dx\\
+&= \frac{1}{2}(-cos(x + y)\big|_{0}^{\frac{\pi}{2}})\\
+&= \frac{1}{2}(-cos(y + \frac{\pi}{2}) + cos(y))\\
+\end{align}
+$$
+
+## Part E
+
+$P(X \leq \frac{\pi}{4}, Y = \frac{\pi}{4}) = 0$, since an interval for Y is needed, not a single value.
+
+## Part F
+
+Assume that $X$ and $Y$ are independent. If they are independent, then $Cov(X, Y) = 0$. This is false, as
+shown in part G. Therefore, $X$ and $Y$ are not independent variables.
+
+## Part G
+
+Below is the calculation for $Cov(X, Y)$. For brevity and my own sanity, I've ommitted a few steps, but
+have shown the most important ones that actually solve the problem. I figure that you're more interested
+in me showing that I know how to do the problem than just doing a tedious integration. I will
+mark where I skipped a step or two and explain some more complex part of my solution:
+
+$$\begin{align}
+Cov(X, Y) &= \frac{1}{2}\int_{0}^{\frac{\pi}{2}}\int_{0}^{\frac{\pi}{2}}xysin(x + y) dx dy\\
+&= \frac{1}{2}\int_{0}^{\frac{\pi}{2}}(-cos(x + y)\big|_{0}^{\frac{\pi}{2}} dy) & \text{Integration by parts}\\
+&= \frac{1}{2}\int_{0}^{\frac{\pi}{2}}(-cos(y + \frac{\pi}{2}) + cos(y) dy)\\
+\end{align}
+$$
+
+## Part H
+
 # Problem 4
+
+
+
+
+
+
+
+
 
 
 
