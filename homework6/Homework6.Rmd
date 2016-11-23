@@ -1,0 +1,145 @@
+---
+title: "Homework6"
+author: "Andre LaFleur"
+date: "November 17, 2016"
+output: html_document
+---
+
+# Problem 1
+
+## Part A
+
+Let $X ~ Bin(n, \frac{1}{2})$, where $n$ is the number of coin flips my friend will make. What my friend
+ends up providing is some number, $x_i$, representing the number of those coins that were heads.
+
+We can come up with an unbiased statistic, or $\hat{n}$, using the following equation:
+
+$$\begin{align}
+E[X_i] &= E[\overline{X}_10] \\
+&= \frac{1}{10}E[\Sigma_{i = 1}^{10} X_i] \\
+&= E[X_i] \\
+&= n/2 \\
+\Rightarrow \hat{n} &= 2E[X_i] \\
+\end{align}
+$$
+
+## Part B
+
+```{r}
+n = 25
+probability = 1/2
+trials = 10000
+n_hats = c()
+
+## Each experiment
+for(i in 1:trials){
+  heads = 0
+  
+  # Tossing 25 coins
+  for(j in 1:n){
+    if(runif(1) > probability){
+      heads = heads + 1
+    }
+  }
+  
+  n_hats[i] = 2 * heads # n_hat = 2 * E[X_i]
+}
+
+cat(paste("n hat: ", mean(n_hats), "; expected ", n))
+```
+
+## Part C
+
+```{r}
+boxplot(0:50,data=n_hats, main = "Expected value of X")
+abline(h = n, col = "red")
+```
+
+## Part D
+
+```{r}
+hist(n_hats, freq = FALSE)
+s = seq(-25, 25, 0.05)
+lines(s, dnorm(s), col = 'red', lwd = 2)
+```
+
+# Problem 2
+
+The confidence interval is given by the formula $X_n \pm z_{\frac{\alpha}{2}}(\frac{\sigma}{\sqrt{n}})$. We are given
+values in the problem, that is $n = 10$, $\overline{X}_10 = 94 kg$, $\overline{x} = 93.5 kg$, and $\sigma = 0.75$.
+Given that $z_{\frac{\alpha}{2}} = P(1 - \alpha)$, and we are to use $\alpha = 0.05$, the solution is a matter of
+"plugging and chugging":
+
+```{r}
+n = 10
+alpha = 0.05
+mean_x = 93.5
+sigma = 0.75
+z_alpha_over_two = qnorm(1 - 0.5 * alpha)
+
+lower_bound = mean_x - z_alpha_over_two * (sigma / sqrt(n))
+upper_bound = mean_x + z_alpha_over_two * (sigma / sqrt(n))
+
+cat(paste("Lower bound:\t", lower_bound, "\nUpper bound:\t", upper_bound))
+```
+
+# Problem 3
+
+TODO: This
+
+# Problem 4
+
+```{r}
+x = iris$Sepal.Width[iris$Species == "virginica"]
+```
+
+## Part A
+
+```{r}
+alpha = 0.05
+z_alpha_2 = qnorm(1 - alpha / 2)
+sigma = 1 # because I don't know what else to use
+l_n = mean(x) - z_alpha_2 * (sigma / length(x))
+u_n = mean(x) + z_alpha_2 * (sigma / length(x))
+
+cat(paste("Lower bound: ", l_n, "\nUpper bound: ", u_n))
+```
+
+## Part B
+
+```{r}
+alpha = 0.05
+z_alpha_2 = qnorm(1 - alpha / 2)
+sigma = sqrt(var(x))
+l_n = mean(x) - z_alpha_2 * (sigma / length(x))
+u_n = mean(x) + z_alpha_2 * (sigma / length(x))
+
+cat(paste("Lower bound: ", l_n, "\nUpper bound: ", u_n))
+```
+
+## Part C
+
+```{r}
+y = x[1:10]
+
+alpha = 0.05
+z_alpha_2 = qnorm(1 - alpha / 2)
+
+sigma = 1 # because I don't know what else to use
+l_n = mean(x) - z_alpha_2 * (sigma / length(x))
+u_n = mean(x) + z_alpha_2 * (sigma / length(x))
+
+cat(paste("Lower bound: ", l_n, "\nUpper bound: ", u_n))
+
+sigma = sqrt(var(y))
+l_n = mean(x) - z_alpha_2 * (sigma / length(x))
+u_n = mean(x) + z_alpha_2 * (sigma / length(x))
+
+cat(paste("Lower bound: ", l_n, "\nUpper bound: ", u_n))
+```
+
+## Part D
+
+The Gaussian confidence interval when unchanged, while the student one was modified only slightly. This is due
+to the use of the experimental variance given the data, as the Student distribution relies on that instead of
+a provided standard distribution.
