@@ -85,7 +85,23 @@ cat(paste("Lower bound:\t", lower_bound, "\nUpper bound:\t", upper_bound))
 
 # Problem 3
 
-TODO: This
+## Part A
+
+Given that our confidence interval was $(1.6, 7.8)$, then the mean would simply be the value directly between
+them, as shown below:
+
+$$\begin{align}
+\overline{X_n} - z_{\frac{\alpha}{2}} * (\frac{\sigma}{srt(n)}) &\leq \mu &\leq \overline{X} + z_{\frac{\alpha}{2}} * (\frac{\sigma}{srt(n)}) \\
+\overline{X_n} &\leq \mu + z_{\frac{\alpha}{2}} * (\frac{\sigma}{srt(n)}) - z_{\frac{\alpha}{2}} * (\frac{\sigma}{srt(n)}) &leq \overline{X_n} \\
+\Rightarrow &\overline{X_n} = \mu
+\end{align}
+$$
+
+This can be found by the mean of the two bounds of the interval itself, which is simply 4.7.
+
+## Part B
+
+
 
 # Problem 4
 
