@@ -1,0 +1,75 @@
+---
+title: "Fisher Exact Test"
+author: "Tom Fletcher"
+date: "November 29, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = "")
+```
+
+This is how to do Fisher's exact test. First construct a 2x2 contingency
+table (this is a perfect result for the lady drinking tea)
+```{r}
+(C = matrix(c(4,0,0,4), 2, 2))
+```
+
+Now run Fisher's test on the table. The `alternative = "greater"` option means that
+we are testing the probability of getting an equal or even better table by
+random luck (i.e., one with higher numbers on the diagonal of the table).
+```{r}
+fisher.test(C, alternative = "greater")
+```
+
+Notice this is the same as the probability of getting exactly this table by
+random luck, because there is no better table. There are "8 choose 4"
+possible guesses, so the probability of the correct guess is:
+```{r}
+(p = 1 / choose(8, 4))
+```
+
+Now try if she misclassifies two cups:
+```{r}
+(C = matrix(c(3,1,1,3), 2, 2))
+fisher.test(C, alternative = "greater")
+```
+
+And now 4 misclassified cups:
+```{r}
+(C = matrix(c(2,2,2,2), 2, 2))
+fisher.test(C, alternative = "greater")
+```
+
+Notice this is just $1 - p$, where $p$ was the probability above of a perfect answer.
+This is because there is exactly one combination that is worse.
+```{r}
+(C = matrix(c(1,3,3,1), 2, 2))
+fisher.test(C, alternative = "greater")
+```
+
+Everything wrong! Notice the probability of doing this well or better is 1.
+```{r}
+(C = matrix(c(0,4,4,0), 2, 2))
+fisher.test(C, alternative = "greater")
+```
+
+Next lets look at how to use Fisher's Exact Test to revisit the question
+about if smoking is linked to heart attacks. (This came up in HW 4, #1.)
+Again, we are using the CDC BRFSS Survey data. Slightly different from the HW
+numbers, I'm only including the data from people in Utah.
+
+Here our null hypothesis is that there is no relationship between smoking and
+heart attacks. The alternate hypothesis is that there is a positive
+relationship (that is, smoking increases your chance of a heart attack). The
+contingency table consists of counts from the CDC survey respondents:
+
+Variables         | Smoke   |   Don't Smoke
+------------------|---------|------------------
+Heart Attack      | 203     | 2556
+No Heart Attack   | 230     | 7095
+
+```{r}
+(C = matrix(c(203, 230, 2556, 7095), 2, 2))
+fisher.test(C, alternative = "greater")
+```

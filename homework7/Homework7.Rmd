@@ -1,0 +1,75 @@
+---
+title: "Homework7"
+author: "Andre LaFleur"
+date: "December 1, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Problem 1
+
+Below is the Fisher test of the data provided:
+
+```{r}
+cardiac = read.csv("cardiac.dat")
+
+# First let's gather up all the data into a contingency matrix
+malesWith = 0
+malesWithout = 0
+femalesWith = 0
+femalesWithout = 0
+
+# Kinda hacky, but whatever
+for(i in 1:nrow(cardiac)){
+  if(cardiac[i, "gender"] == 0){
+    if(cardiac[i,"hxofHT"] == 0) { 
+      malesWith = malesWith + 1
+    } else { 
+        malesWithout = malesWithout + 1
+    }
+  } else {
+    if(cardiac[i,"hxofHT"] == 0){
+      femalesWith = femalesWith + 1
+    } else {
+      femalesWithout = femalesWithout + 1
+    }
+  }
+}
+
+# Now the contingency matrix and fisher test
+C = matrix(c(malesWith, malesWithout, femalesWith, femalesWithout), 2, 2)
+fisher.test(C, alternative = "greater")
+
+```
+
+According to the Fisher test, $p = 0.9848$. I don't think the null hypothesis can be rejected at $\alpha=0.05$, since
+the confidence interval is still very close to $0.5$.
+
+# Problem 2
+
+```{r}
+maleBP = cardiac$basebp[cardiac$gender == 0]
+femaleBP = cardiac$basebp[cardiac$gender == 1]
+```
+
+## PART A
+
+The alternate hypothesis is the one we are interested in - that is, "women have a lower resting blood pressure than men." The null hypothesis
+would be the opposite - "women have a higher resting blood pressure than men."
+
+## PART B
+
+```{r}
+boxplot(maleBP, femaleBP, names = c("Male Resting Blood Pressure", "Female Resting Blood Pressure"))
+```
+
+## PART C
+
+
+## PART D
+
+# Problem 3
+# Problem 4
