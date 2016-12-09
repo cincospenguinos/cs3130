@@ -71,5 +71,100 @@ boxplot(maleBP, femaleBP, names = c("Male Resting Blood Pressure", "Female Resti
 
 ## PART D
 
+## PART E
+
 # Problem 3
+
+## PART A
+
+The alternative hypothesis would be that there is some correlation between petal length
+and sepal length - that is, $\rho(x, y) \neq 0$.
+
+## PART B
+
+```{r}
+x = iris$Petal.Length
+y = iris$Sepal.Length
+plot(x, y, main="Petal and Sepal Lengths", xlab="Petal Length", ylab="Sepal Length")
+```
+
+## PART C
+
+TODO: This
+```{r}
+```
+
+## PART D
+
+```{r}
+t = cor(x, y) * sqrt(148/(1-cor(x, y)^2))
+print(t)
+```
+
+## PART E
+
+## PART F
+
+The alternative hypothesis would be that there is some correlation between sepal width
+and sepal length.
+
+## PART G
+
+```{r}
+x = iris$Sepal.Width
+y = iris$Sepal.Length
+plot(x, y, main="Sepal Widths and Lengths", xlab="Sepal Width", ylab="Sepal Length")
+print(paste("T: ", cor(x, y) * sqrt(148/(1-cor(x, y)^2))))
+```
+
 # Problem 4
+
+```{r}
+## Calculates regression given x and y vectors. Returns c(slope, intercept)
+myregression = function(x, y){
+  sum_of_products = 0
+  sum_of_squares = 0
+  
+  for(i in 1:length(y)){
+    sum_of_products = sum_of_products + x[i] * y[i]
+    sum_of_squares = sum_of_squares + x[i]^2
+  }
+  
+  n_products = sum_of_products * length(x)
+  
+  beta = (n_products - (sum(x) * sum(y)))/(length(x) * sum_of_squares - sum(x)^2)
+  
+  return(c(beta, mean(y)))
+}
+```
+
+
+## PART A
+
+```{r}
+x=faithful$waiting
+y=faithful$eruptions
+
+regression = myregression(x, y)
+cat(paste("Slope\t", regression[1]))
+cat(paste("Intercept\t", regression[2]))
+plot(x, y, main="Old Faithful Eruptions and Waiting Times", xlab="Waiting Period", ylab="Eruption Period")
+abline(a=regression[1], b=regression[2], col="red")
+```
+
+## PART B
+
+```{r}
+
+```
+
+## PART C
+
+```{r}
+print(lm(y ~ x))
+print(regression)
+```
+
+## PART D
+
+
